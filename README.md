@@ -1,56 +1,44 @@
 # Cursor to Marp
 
-CursorのAIアシスタントを使用して、MarkdownファイルからMarpスライドを簡単に生成するリポジトリです。
+Marp用のプレゼンテーションファイルを生成するツールです。
 
-## 前提条件
+## 概要
 
-1. Cursorのインストール
-2. VS Codeの拡張機能「Marp for VS Code」の追加
-3. テーマの設定
-   - VS Codeの設定で、Markdown > Marp:Themesに以下を追加：
-   ```
-   https://cunhapaulo.github.io/style/freud.css
-   ```
-   - その他のテーマについては[Qiita記事](https://qiita.com/YoshikiIto/items/74b3d786266b1de3ed93)を参考にしてください
-   - 人気のテーマ：
-     - gradient
-     - beamer
-     - border
-     - dracula
-     - speee
-     - plato
-     - heidegger
+このプロジェクトは、入力ファイルからMarp用のスライドファイルを自動生成します。
+文字数制限や行数制限を遵守し、読みやすいプレゼンテーションを作成します。
 
-## 基本的な使い方
+## ディレクトリ構成
 
-1. 入力ファイルの準備
-   - `input/input.md`に変換したいMarkdownファイルを配置
-   - ※mdファイルの名前は任意のものでも構いません
+```
+cursor-to-marp/
+├── input/                 # 入力ファイル
+│   └── 20250708_サンプル.md
+├── output/                # 出力ファイル
+│   └── 20250127_事業承継改革.md
+├── .images/               # 画像ファイル（必要に応じて）
+├── YYYYMMDD_template.md   # Marpテンプレート
+├── .gitignore            # Git除外設定
+└── README.md             # このファイル
+```
 
-2. スライド生成ルールの適用
-   - CursorのAIチャットの@rulesにて「slidemarprules」を設定
-   - これにより、以下のルールが自動的に適用されます：
-     - テンプレートの使用
-     - 文字数制限
-     - レイアウト制限
-     - 画像使用ルール
-     - フォーマット制限   
+## 使用方法
 
-3. スライドの生成
-   - CursorのAIチャットに「@input.md を元にスライド生成」と指示
-   - 自動的に`YYYYMMDD_タイトル.md`形式でスライドが生成されます
-   - ※1でファイル名を変更している場合は任意のものに変更すること
+1. `input/`フォルダに元となるファイルを配置
+2. テンプレートファイル（`YYYYMMDD_template.md`）を参考にMarpファイルを作成
+3. 生成されたファイルは`output/`フォルダに保存
 
-## 注意事項
+## 制限事項
 
-1. 画像の配置
-   - 必ず`.images`ディレクトリに配置
-   - ロゴ画像は必須
+- **文字数制限**: タイトル40文字以内、本文1行50文字以内、1スライド500文字以内
+- **行数制限**: 1スライド15行以内
+- **見出しレベル**: h1からh3まで
+- **リスト**: 最大3階層まで
+- **画像**: 1スライドあたり最大2枚まで
 
-2. スライドのスタイル
-   - `YYYYMMDD_template.md`で定義
-   - カスタマイズする場合はテンプレートを編集
+## テンプレート
 
-3. 日本語対応
-   - フォントは'Hiragino Sans'と'Noto Sans CJK JP'を使用
-   - 文字化けが発生する場合はフォントの確認を
+`YYYYMMDD_template.md`を基に、日付と適切なタイトルでファイルを作成します。
+
+## ライセンス
+
+Copyright (C) アイゼック株式会社, All Rights Reserved.
